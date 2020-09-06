@@ -1,0 +1,54 @@
+<html>
+
+ <script>
+            function validateform(){
+            var name=document.myform.username.value;
+            var password=document.myform.password.value;
+            var email=document.myform.email.value;
+            var retype_password=document.myform.retype_password.value;
+            console.log(name+password+retype_password+email);
+            var res=true;
+            if (name==null || name=="" || name.length<6){
+               document.getElementById("name_error").innerHTML = "Name can't be blank and has to be longer than 6 characters";
+
+              res= false;
+            }
+             if(password.length<6 || password.length!=retype_password.length){
+                document.getElementById("password_error").innerHTML = "Password must be at least 6 characters long.";
+              res= false;
+            }
+               if((/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))!=true){
+            	
+            	document.getElementById("email_error").innerHTML = "Email must be valid";
+            	              res= false;
+            	          }
+
+           	return res;
+
+            }
+            </script>
+   <body>
+ <form name="myform" action = "http://localhost:5000/signup"  method = "post" onsubmit="return validateform()">
+ 	  
+
+      	 <p>Enter Username:</p>
+      	 <p id="name_error" ></p>
+         <p><input type = "text" name = "username" /></p>
+         <p>Enter Email:</p>
+         <p id="email_error" ></p>
+
+         <p><input type = "text" name = "email" /></p>
+
+          <p>Enter Password:</p>
+                    <p id="password_error" ></p>
+
+         <p><input type = "Password" name = "password" /></p>
+
+         <p>Enter Password again:</p>
+         <p><input type = "Password" name = "retype_password" /></p>
+
+         <p><input type = "submit" value = "signup" /></p>
+
+      </form>
+   </body>
+</html>

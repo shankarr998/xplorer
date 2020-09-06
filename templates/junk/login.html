@@ -1,0 +1,29 @@
+<html>
+
+            <script>
+            function validateform(){
+            var name=document.myform.username.value;
+            var password=document.myform.password.value;
+            console.log("asdasd");
+            if (name==null || name=="" || name.length<6){
+              alert("Name can't be blank and has to be longer than 6 characters");
+              return false;
+            }else if(password.length<6){
+              alert("Password must be at least 6 characters long.");
+              return false;
+              }
+            }
+            </script>
+   <body>
+
+  <form name = "myform" action = "http://localhost:5000/login" method = "post" onsubmit="return validateform()">
+         <p>Enter Username:</p>
+         <p><input type = "text" name = "username" /></p>
+          <p>Enter Password:</p>
+         <p><input type = "Password" name = "password" /></p>
+
+         <p><input type = "submit" value = "login" /></p>
+
+      </form>
+   </body>
+</html>
